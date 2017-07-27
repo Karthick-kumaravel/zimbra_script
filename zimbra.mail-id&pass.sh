@@ -1,7 +1,7 @@
 #!/bin/bash
-for i in `cat mail.voltech.txt | awk '{ print $1 }'`
+for i in `cat file.txt* | awk '{ print $1 }'`
 do
-	a=`cat mail.voltech.txt | grep -w $i | awk '{ print $2 }'`	
+	a=`cat file.txt* | grep -w $i | awk '{ print $2 }'`	
 	`zmprov ca $i $a > result.txt`
 	for j in `cat result.txt`	
 	do
@@ -9,3 +9,6 @@ do
 	echo "$j -----> $a Mail id created with the password $a"
 done
 done
+
+
+file.txt* = File contains username in the first column and password in the second column

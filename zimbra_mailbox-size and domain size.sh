@@ -1,5 +1,5 @@
 #!/bin/bash
-all_accounts=`zmprov -l gaa | grep "sixthstar.in"` 
+all_accounts=`zmprov -l gaa | grep "Domain name"` 
 for account in $all_accounts
 do
 mbox_size=`zmmailbox -z -m $account gms`
