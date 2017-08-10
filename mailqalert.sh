@@ -17,8 +17,5 @@ if [[ $queue -gt 100 ]]; then
 	echo "Thank You" >> /tmp/result.txt
 	echo "Regards" >> /tmp/result.txt
 	echo "$HN" >> /tmp/result.txt
-	echo "Subject: 	Number of mails on server $HN : $queue" | cat - /tmp/result.txt | /opt/zimbra/postfix/sbin/sendmail -F  "fron-address" -t "to-address"
+	echo "Subject: 	Number of mails on server $HN : $queue" | cat - /tmp/result.txt | /opt/zimbra/postfix/sbin/sendmail -F  "from-address" -t "to-address"
 fi
-
-
-
