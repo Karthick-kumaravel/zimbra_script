@@ -35,7 +35,7 @@ On executing the above command, It will **check for the disk space** and if the 
 Place the above command in the **cronjob** to get check the disk space periodically.
 
     $ crontab -e
-      0   10  *   *   0-6     <pathh/disk_alert_b.py>
+      0   10  *   *   0-6     <path/disk_alert_b.py>
 
 The above **cronjob** will execute the script (disk_alert_b.py) daily at 10:00 am.
 
