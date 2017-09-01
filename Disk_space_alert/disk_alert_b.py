@@ -23,7 +23,7 @@ if ( a == False ):
 	sender = 'name@domain.com'                          # Sender email-address
 	passwd = 'Password'                                 # Sender email-address's password
 
-	server = smtplib.SMTP('star.sixthstar.in', 587)     # SMTP of the server
+	server = smtplib.SMTP('smtp.domain.com', 587)     # SMTP of the server
 	server.ehlo()                                       # ESMTP
 	server.starttls()                                   # TLS
 	server.ehlo()
