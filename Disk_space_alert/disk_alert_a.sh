@@ -3,7 +3,7 @@
 #!/bin/bash
 
 > /tmp/result.txt
-a=`df -hT | awk NR==5 | awk '{ print $6 }' | tr -d %`  # It's our wish to take the mount point's used space to comapre in 'if'loop #
+a=`df -hT | grep -w "/" |awk '{print $6}' | tr -d "%`  # It's our wish to take the mount point's used space to comapre in 'if'loop #
 HN=`hostname`
 
 if [[ $a -ge 80 ]]; then                               # specify the alert level here, Here i use 80%  #
