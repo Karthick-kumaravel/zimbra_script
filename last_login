@@ -1,0 +1,33 @@
+############################################ Script to get the users, before the mentioned lastlogin date ############################################
+1.Run the script as a "zimbra user"
+2.It would be better to run the script in /tmp directory
+3.The script has two conditions
+  i) It will look only the closed users
+ ii) The letter "R" should be mentioned in the description of user in zimbra adminconsole
+4.If the contions in the point 3 is achieved, Then the script will provide the users who has the last login date less than the date we are mentioning
+
+
+#!/bin/bash
+
+date=$1
+domain=$2
+
+if [ $# -eq 2 ]
+then
+ for i in `zmaccts | grep closed | grep -v never | awk '{print $1}' | awk -F '@' '{print $1}'| grep -v domain`
+ do
+ last_login=`zmaccts | grep ^$i@ | awk '{print $5}'`
+   if [ "$last_login" \< "$date" ];
+   then
+   dis=`zmprov ga $i@$domain | grep -i Description | grep -o R`
+     if [ "$dis" == 'R' ];
+     then
+       echo "$i@$domain    $last_login"
+     fi
+   fi
+ done
+else
+ echo "Run the script as follows \"sh last_login.sh mm/dd/yy domain\" "
+ echo "mm/dd/yy - last login date"
+ echo "doamin - example.com"
+fi
